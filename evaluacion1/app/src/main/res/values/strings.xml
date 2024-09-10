@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">evaluacion 1</string>
+    <array name="tipos">
+        <item>Tomates</item>
+        <item>Cebolla</item>
+        <item>Lechugas</item>
+        <item>Apio</item>
+        <item>Choclo</item>
+    </array>
+</resources>
