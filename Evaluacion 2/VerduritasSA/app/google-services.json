@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "658492443119",
+    "project_id": "verduritassa-jordanmorales",
+    "storage_bucket": "verduritassa-jordanmorales.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658492443119:android:9d1b92cc694ab4b0610e1a",
+        "android_client_info": {
+          "package_name": "jordan.morales.verduritassa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdSRa8x4WLy_ucj8dA3nEtXQMeUoFJM2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

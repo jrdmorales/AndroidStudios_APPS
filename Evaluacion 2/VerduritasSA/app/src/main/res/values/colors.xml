@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#9CEC32</color>
+    <color name="primary_light">#E8FACE</color>
+    <color name="button_start">#14AF61</color>
+    <color name="button_border">#48760B</color>
+    <color name="background_light">#F8FDF2</color>
+    <color name="text_main">#3A590A</color>
+    <color name="text_secondary">#424242</color>
+    <color name="button_edit_background">#FFFFFF</color>
+    <color name="background_top">#eafad2</color>
+    <color name="background_bot">#b0ea5b</color>
+
+
+</resources>

@@ -1,0 +1,146 @@
+<!-- activity_formulario.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="-3dp"
+        android:background="@color/background_light"
+        android:orientation="vertical">
+
+
+        <!-- Campo de nombre -->
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:background="#a5d75e">
+
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="353dp"
+                android:layout_marginBottom="19dp"
+                android:contentDescription="atras"
+                android:src="@drawable/logout" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="60dp"
+            android:text="Nombre"
+            android:textColor="@color/text_main"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+
+        <EditText
+            android:id="@+id/editTextAlias"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="18dp"
+            android:textColor="@color/text_main"
+            android:textColorHint="@color/primary_light" />
+        <!-- Campo de fecha Siembra -->
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:text="Fecha de siembra"
+            android:textColor="@color/text_main"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/FechaSiembra"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="DD/MM/AAAA"
+            android:inputType="none"
+            android:padding="18dp"
+            android:textColor="@color/text_main"
+            android:textColorHint="@color/primary_light" />
+        <!-- Campo de planta -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:text="Planta"
+            android:textColor="@color/text_main"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerPlanta"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:inputType="text"
+            android:padding="18dp"
+            android:textColor="@color/text_main"
+            android:textColorHint="@color/primary_light"
+            tools:ignore="TextFields" />
+
+        <Button
+            android:id="@+id/btnGuardarCultivo"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="95dp"
+            android:backgroundTint="@color/primary"
+            android:padding="12dp"
+            android:text="Guardar"
+            android:textColor="@color/text_main"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="283dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="110dp"
+        android:padding="16dp"
+        android:text="Verduritas SA"
+        android:textColor="#2e2e2e"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

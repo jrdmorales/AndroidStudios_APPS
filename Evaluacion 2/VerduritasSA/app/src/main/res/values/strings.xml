@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VerduritasSA</string>
+    <string-array name="plantas_array">
+        <item>Tomates</item>
+        <item>Cebollas</item>
+        <item>Lechugas</item>
+        <item>Apio</item>
+        <item>Choclo</item>
+    </string-array>
+
+</resources>
