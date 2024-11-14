@@ -18,6 +18,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterUserActivity extends AppCompatActivity {
 
@@ -48,7 +54,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         TextView textViewLogin = findViewById(R.id.textViewLogin);
         if (textViewLogin != null) {
             textViewLogin.setOnClickListener(v -> {
-                Intent intent = new Intent(RegisterUserActivity.this,LoginActivity.class);
+                Intent intent = new Intent(RegisterUserActivity.this, LoginActivity.class);
                 startActivity(intent);
             });
         } else {
@@ -56,7 +62,6 @@ public class RegisterUserActivity extends AppCompatActivity {
             Log.e("RegisterUserActivity", "textViewLogin no se encontró.");
         }
     }
-
 
 
     private void registerUser() {
@@ -93,7 +98,25 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    // Save additional user information if needed
+                    // Save additional user information to Firebase Auth
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null) {
+                        user.updateProfile(new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(nombre)  // Set the display name
+                                        .build())
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            // User profile updated successfully
+                                            saveAdditionalInfoInFirestore(nombre, pais, genero, email, password);
+                                        } else {
+                                            // Handle error updating profile
+                                            Toast.makeText(RegisterUserActivity.this, "Error actualizando perfil", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
                     Toast.makeText(RegisterUserActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(RegisterUserActivity.this, MainActivity.class));
                     finish();
@@ -102,5 +125,29 @@ public class RegisterUserActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void saveAdditionalInfoInFirestore(String nombre, String pais, String genero, String email, String password) {
+        {
+            FirebaseUser user = mAuth.getCurrentUser();
+            if (user != null) {
+                String userId = user.getUid();
+                Map<String, Object> userInfo = new HashMap<>();
+                userInfo.put("nombre", nombre);
+                userInfo.put("pais", pais);
+                userInfo.put("genero", genero);
+                userInfo.put("email", email);
+                userInfo.put("password", password);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("users").document(userId).set(userInfo)
+                        .addOnSuccessListener(aVoid -> {
+                            Log.d("RegisterUserActivity", "Información adicional guardada");
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(RegisterUserActivity.this, "Error al guardar información adicional", Toast.LENGTH_SHORT).show();
+                        });
+            }
+        }
     }
 }

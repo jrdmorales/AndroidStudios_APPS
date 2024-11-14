@@ -12,7 +12,20 @@
           "package_name": "jordan.morales.verduritassa"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "658492443119-30g9q18cv24dc30hrr8taa59sifimhes.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jordan.morales.verduritassa",
+            "certificate_hash": "51cbe5bf424e0b6a7451c187256336cf40933231"
+          }
+        },
+        {
+          "client_id": "658492443119-1s5l3u0hvap8vmcmsht8ecmf4utlntiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAdSRa8x4WLy_ucj8dA3nEtXQMeUoFJM2c"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658492443119-1s5l3u0hvap8vmcmsht8ecmf4utlntiv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

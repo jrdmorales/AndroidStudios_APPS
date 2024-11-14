@@ -8,13 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -23,8 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextAlias,FechaSiembra;
     private Spinner spinnerPlanta;
     private Button btnGuardarCultivo;
+    private ImageView backArrow;
 
-    public static ArrayList<String> cultivosList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         FechaSiembra = findViewById(R.id.FechaSiembra);
         btnGuardarCultivo = findViewById(R.id.btnGuardarCultivo);
         editTextAlias = findViewById(R.id.editTextAlias);
+        backArrow = findViewById(R.id.backArrow);
 
         // Configurando el Spinner con los tipos de cultivos
         String[] tiposCultivos = {"Tomates (80 días)", "Cebollas (120 días)", "Lechugas (60 días)", "Apio (85 días)", "Choclo (90 días)"};
@@ -57,6 +58,18 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        // ir hacia atras
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
+
+    }
+
+    private void back(){
+        finish();
     }
     private void showDatePickerDialog() {
         // Obtener la fecha actual
@@ -87,10 +100,10 @@ public class RegisterActivity extends AppCompatActivity {
         // Obtener fecha seleccionada del EditText (FechaSiembra)
         String fechaSiembraStr = FechaSiembra.getText().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        Calendar fechaSiembra = Calendar.getInstance();
+        Calendar fechaSiembraCalendar = Calendar.getInstance();
 
         try {
-            fechaSiembra.setTime(sdf.parse(fechaSiembraStr));
+            fechaSiembraCalendar.setTime(sdf.parse(fechaSiembraStr));
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error al obtener la fecha de siembra", Toast.LENGTH_SHORT).show();
@@ -98,13 +111,16 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Calcular la fecha de cosecha
-        Calendar fechaCosecha = (Calendar) fechaSiembra.clone();
-        fechaCosecha.add(Calendar.DAY_OF_MONTH, diasCosecha);
+        Calendar fechaCosechaCalendar = (Calendar) fechaSiembraCalendar.clone();
+        fechaCosechaCalendar.add(Calendar.DAY_OF_MONTH, diasCosecha);
 
-        String fechaCosechaStr = sdf.format(fechaCosecha.getTime());
+        String fechaCosechaStr = sdf.format(fechaCosechaCalendar.getTime());
 
-        // Crear el objeto Cultivo
-        Cultivo nuevoCultivo = new Cultivo(alias, tipoCultivo, fechaSiembraStr, fechaCosechaStr);
+        // Crear el objeto Cultivo con el id
+        String idCultivo = "some_unique_id"; // Este id lo puedes obtener de Firestore o generarlo manualmente
+        Cultivo nuevoCultivo = new Cultivo(idCultivo, alias, tipoCultivo, fechaSiembraStr, fechaCosechaStr);
+
+        // Enviar el objeto Cultivo a la actividad anterior
         Intent resultIntent = new Intent();
         resultIntent.putExtra("nuevoCultivo", nuevoCultivo);
         setResult(RESULT_OK, resultIntent);

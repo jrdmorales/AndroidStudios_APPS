@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">VerduritasSA</string>
+    <string name="default_web_client_id">658492443119-1s5l3u0hvap8vmcmsht8ecmf4utlntiv.apps.googleusercontent.com</string>
+
+
     <string-array name="plantas_array">
         <item>Tomates</item>
         <item>Cebollas</item>

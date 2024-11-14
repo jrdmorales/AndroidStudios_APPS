@@ -5,11 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.List;
 
@@ -31,30 +32,36 @@ public class CultivoAdapter extends RecyclerView.Adapter<CultivoAdapter.CultivoV
         return new CultivoViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull CultivoViewHolder holder, int position) {
         Cultivo cultivo = cultivos.get(position);
-        holder.nombre.setText(cultivo.getAlias()); // Usar getAlias() en lugar de getNombre()
-        holder.fecha.setText(cultivo.getFechaSiembra()); // Usar getFechaSiembra() en lugar de getFecha()
+        holder.nombre.setText(cultivo.getAlias());
+        holder.fecha.setText(cultivo.getFechaSiembra());
 
         holder.ajustes.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(context, holder.ajustes);
-            popup.inflate(R.menu.cultivo_menu);
-            popup.setOnMenuItemClickListener(item -> {
-                if (item.getItemId() == R.id.menu_editar) {
-                    listener.onEditClick(cultivo);
-                    return true;
-                } else if (item.getItemId() == R.id.menu_eliminar) {
-                    listener.onDeleteClick(cultivo);
-                    return true;
-                }
-                return false;
+            // Crear y configurar el BottomSheetDialog
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+            View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_menu, null);
+            bottomSheetDialog.setContentView(bottomSheetView);
+
+            // Configurar acciones para los botones del Bottom Sheet
+            TextView tvEditar = bottomSheetView.findViewById(R.id.tvEditar);
+            TextView tvEliminar = bottomSheetView.findViewById(R.id.tvEliminar);
+
+            tvEditar.setOnClickListener(view -> {
+                listener.onEditClick(cultivo);
+                bottomSheetDialog.dismiss();
             });
-            popup.show();
+
+            tvEliminar.setOnClickListener(view -> {
+                listener.onDeleteClick(cultivo);
+                bottomSheetDialog.dismiss();
+            });
+
+            // Mostrar el BottomSheetDialog
+            bottomSheetDialog.show();
         });
     }
-
 
     @Override
     public int getItemCount() {

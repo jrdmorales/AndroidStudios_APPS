@@ -5,46 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
+    android:padding="16dp"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="49dp"
-
-    >
-
+    tools:context=".LoginActivity">
 
     <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="729dp"
+        android:layout_width="364dp"
+        android:layout_height="728dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="-14dp">
+        android:padding="24dp">
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="Email"
             android:textColor="@color/text_main"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
-
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/primary_light"
             android:inputType="textEmailAddress"
-            android:padding="18dp"
+            android:padding="16dp"
             android:textColor="@color/text_main"
             android:textColorHint="@color/primary_light" />
 
@@ -52,7 +48,7 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:text="Contraseña"
             android:textColor="@color/text_main"
             android:textSize="20sp"
@@ -62,11 +58,10 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/primary_light"
             android:inputType="textPassword"
-            android:padding="18dp"
+            android:padding="16dp"
             android:textColor="@color/text_main"
             android:textColorHint="@color/primary_light" />
 
@@ -74,57 +69,69 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/button_start"
             android:text="Ingresar"
             android:textColor="@color/text_main"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:backgroundTint="@color/primary_light"
-            android:textColor="@color/text_secondary"
-            app:icon="@drawable/logo_google"
-            app:iconPadding="18dp"
-            app:iconGravity="textStart"
-            app:iconTint="@android:color/white"
-            android:text="Continuar con Google"
-            android:textStyle="bold"
-            android:textSize="16sp"
 
-            />
+        <LinearLayout
+            android:id="@+id/googleSignInButton"
+            android:layout_width="313dp"
+            android:layout_height="37dp"
+            android:layout_below="@id/loginButton"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/google_button_background"
+            android:backgroundTint="@color/primary_light"
+            android:gravity="center"
+            android:iconTint="@android:color/white"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"
+            android:textStyle="bold">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="25dp"
+                app:srcCompat="@drawable/logo_google" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continuar con Google"
+                android:textColor="@color/text_main"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
                 android:text="No tienes una cuenta? "
                 android:textColor="@color/text_main"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/registerTextView"
-                android:layout_width="116dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
                 android:text=" Regístrate"
                 android:textColor="@color/text_main"
                 android:textStyle="bold" />
+
         </LinearLayout>
+
     </LinearLayout>
+
+
 </RelativeLayout>
-
-
